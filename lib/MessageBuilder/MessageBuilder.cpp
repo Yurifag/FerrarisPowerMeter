@@ -4,7 +4,8 @@ MessageBuilder::MessageBuilder() {
 }
 
 void MessageBuilder::buildConfigrationPayload(const char* node, 
-  const char* device_class, 
+  const char* device_class,
+  const char* state_class, 
   const char* name, 
   const char* unit_of_measurement, 
   const char* value_template,
@@ -17,6 +18,7 @@ void MessageBuilder::buildConfigrationPayload(const char* node,
 
   JSONVar jpayload;
   jpayload["device_class"] = device_class;
+  jpayload["state_class"] = state_class;
   jpayload["name"] = name;
   jpayload["state_topic"] = stateTopicName;
   jpayload["json_attributes_topic"] = stateTopicName;
@@ -59,7 +61,7 @@ void MessageBuilder::getPowerConfigurationPayload(const char* node, char* payloa
   strcpy(name, node);
   strcat(name, "-Power");
 
-  buildConfigrationPayload(node, "power", name, "W", "{{value_json.power}}", payload, buff_size, tNSize);
+  buildConfigrationPayload(node, "power", "measurement", name, "W", "{{value_json.power}}", payload, buff_size, tNSize);
 }
 
 void MessageBuilder::getEnergyConfigurationPayload(const char* node, char* payload, uint16_t buff_size, uint8_t tNSize) {
@@ -67,5 +69,5 @@ void MessageBuilder::getEnergyConfigurationPayload(const char* node, char* paylo
   strcpy(name, node);
   strcat(name, "-Energy");
 
-  buildConfigrationPayload(node, "energy", name, "kWh", "{{value_json.total_energy_kwh}}", payload, buff_size, tNSize);
+  buildConfigrationPayload(node, "energy", "total_increasing", name, "kWh", "{{value_json.total_energy_kwh}}", payload, buff_size, tNSize);
 }

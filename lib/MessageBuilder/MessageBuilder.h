@@ -15,7 +15,8 @@ class MessageBuilder {
 
   private:
     void buildConfigrationPayload(const char* node, 
-      const char* device_class, 
+      const char* device_class,
+      const char* state_class, 
       const char* name, 
       const char* unit_of_measurement, 
       const char* value_template,

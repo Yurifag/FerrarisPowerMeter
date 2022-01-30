@@ -1,6 +1,6 @@
 #include <ConnectionManager.h>
 
-#define DEBUG false
+#define DEBUG true
 #define USE_SERIAL Serial
 
 ConnectionManager *currentObject;

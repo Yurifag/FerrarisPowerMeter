@@ -174,6 +174,10 @@ void loop () {
           today_energy_kwh = 0.0;
         today_energy_kwh += _energyInkWh;  
 
+        // save new counter value
+        connectionManager.config.actual_counter = total_energy_kwh;
+        connectionManager.writeConfiguration();
+
         publish();
 
         if(DEBUG) {
