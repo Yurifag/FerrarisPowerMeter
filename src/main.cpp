@@ -4,7 +4,6 @@
 #include <MessageBuilder.h>
 #include <DoubleResetDetect.h>
 #include <NTPTime.h>
-#include <DisplayManager.h>
 
 // maximum number of seconds between resets that
 // counts as a double reset 
@@ -24,7 +23,6 @@ ConnectionManager connectionManager;
 MqttClient        mqttClient;
 MessageBuilder    msgBuilder;
 NTPTime           ntpTime;
-DisplayManager    displayManager;
 
 uint32_t previousTimestamp     = 0;
 uint8_t  previousDay           = 0;
@@ -202,7 +200,5 @@ void loop () {
 
   } //end if (hasImpulse)
   
-  displayManager.updateDisplay(powerInWatts, total_energy_kwh, today_energy_kwh, date, time);
-
   previousImpulse = _hasImpulse;
 }
